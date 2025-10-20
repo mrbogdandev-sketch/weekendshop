@@ -74,24 +74,61 @@
     }
 
     .logo{
-      width:500px;height:500px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+      width: clamp(120px, 25vw, 500px);
+      height: clamp(120px, 25vw, 500px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
       transition:transform .3s ease,filter .3s ease;
       filter:drop-shadow(0 0 12px rgba(255,255,255,0.1));
     }
-    .logo img{max-width:100%;height:auto;display:block;border-radius:14px;}
-    .logo:hover{transform:scale(1.08);filter:drop-shadow(0 0 18px rgba(255,255,255,0.25));}
+    .logo img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display:block;
+      border-radius:14px;
+    }
+    .logo:hover{
+      transform:scale(1.08);
+      filter:drop-shadow(0 0 18px rgba(255,255,255,0.25));
+    }
 
     .section-title{
-      width:100%;max-width:1100px;margin-top:40px;margin-bottom:25px;text-align:left;padding-left:6px;box-sizing:border-box;font-size:36px;font-weight:600;text-shadow:0 0 15px rgba(255,255,255,0.25);
+      width:100%;
+      max-width:1100px;
+      margin-top:40px;
+      margin-bottom:25px;
+      text-align:left;
+      padding-left:6px;
+      box-sizing:border-box;
+      font-size:clamp(24px, 5vw, 36px);
+      font-weight:600;
+      text-shadow:0 0 15px rgba(255,255,255,0.25);
     }
 
     .gallery{
-      width:100%;max-width:1100px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:start;justify-items:center;margin-bottom:50px;
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+      gap:24px;
+      align-items:start;
+      justify-items:center;
+      margin-bottom:50px;
     }
 
     .card{
-      width:100%;background:var(--card-bg);backdrop-filter:blur(12px) saturate(120%);
-      border-radius:22px;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;
+      width:100%;
+      background:var(--card-bg);
+      backdrop-filter:blur(12px) saturate(120%);
+      border-radius:22px;
+      padding:20px;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
       border:1px solid rgba(255,255,255,0.15);
       transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
       box-shadow:var(--glow);
@@ -103,31 +140,87 @@
     }
 
     .card .thumb{
-      width:100%;height:180px;border-radius:16px;background:rgba(255,255,255,0.06);
+      width:100%;
+      height:180px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.06);
       backdrop-filter:blur(6px) brightness(0.8);
       box-shadow:inset 0 0 20px rgba(255,255,255,0.05);
     }
 
-    .card .meta{margin-top:14px;text-align:center;line-height:1.4}
-    .card .meta .name{font-size:18px;font-weight:600;text-shadow:0 0 8px rgba(255,255,255,0.1);}
-    .card .meta .price{font-size:15px;font-weight:500;opacity:.9;}
+    .card .meta{
+      margin-top:14px;
+      text-align:center;
+      line-height:1.4;
+    }
+    .card .meta .name{
+      font-size:18px;
+      font-weight:600;
+      text-shadow:0 0 8px rgba(255,255,255,0.1);
+    }
+    .card .meta .price{
+      font-size:15px;
+      font-weight:500;
+      opacity:.9;
+    }
 
-    .bottom-actions{display:flex;gap:28px;align-items:center;justify-content:center;margin-top:20px;}
+    .bottom-actions{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      justify-content:center;
+      margin-top:20px;
+    }
 
-    .action-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:36px;overflow:hidden;cursor:pointer;padding:10px 16px;transition:box-shadow .25s ease,transform .25s ease;backdrop-filter:blur(12px) brightness(1.1);background:var(--blur-bg);border:1px solid rgba(255,255,255,0.15);box-shadow:var(--glow);}
-    .action-btn img{display:block;height:60px;width:auto;filter:drop-shadow(0 0 6px rgba(255,255,255,0.15));}
-    .action-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 0 40px rgba(255,255,255,0.12),0 0 120px rgba(255,255,255,0.05);}
+    .action-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:36px;
+      overflow:hidden;
+      cursor:pointer;
+      padding:10px 16px;
+      transition:box-shadow .25s ease,transform .25s ease;
+      backdrop-filter:blur(12px) brightness(1.1);
+      background:var(--blur-bg);
+      border:1px solid rgba(255,255,255,0.15);
+      box-shadow:var(--glow);
+    }
+    .action-btn img{
+      display:block;
+      height: clamp(40px, 10vw, 60px);
+      width:auto;
+      filter:drop-shadow(0 0 6px rgba(255,255,255,0.15));
+    }
+    .action-btn:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 0 40px rgba(255,255,255,0.12),0 0 120px rgba(255,255,255,0.05);
+    }
 
     @media (max-width:1000px){
-      .gallery{grid-template-columns:repeat(2,1fr)}
-      .logo{width:90px;height:90px}
+      header{
+        padding-left: 30px;
+      }
+      .logo{
+        width: clamp(100px, 20vw, 300px);
+        height: clamp(100px, 20vw, 300px);
+      }
     }
     @media (max-width:520px){
-      .gallery{grid-template-columns:repeat(1,1fr)}
-      .section-title{font-size:30px}
-      .logo{width:80px;height:80px}
-      .card .thumb{height:150px}
-      .action-btn img{height:50px}
+      header{
+        padding-left: 20px;
+        justify-content: center;
+      }
+      .logo{
+        width: clamp(80px, 25vw, 200px);
+        height: clamp(80px, 25vw, 200px);
+      }
+      .gallery{
+        grid-template-columns: 1fr;
+      }
+      .card .thumb{
+        height:150px;
+      }
     }
   </style>
 </head>
@@ -135,7 +228,7 @@
   <main class="site" id="siteContent" role="main" aria-labelledby="title">
     <header>
       <div class="logo" id="logoBtn" title="Перейти в Telegram">
-        <img src="logo.png" alt="logo">
+        <img src="logo.png" alt="Weekend Shop Logo">
       </div>
     </header>
 
